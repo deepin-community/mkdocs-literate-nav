@@ -1,15 +1,63 @@
-Source: template-repository
-Section: unknown
+Source: mkdocs-literate-nav
+Section: python
 Priority: optional
-Maintainer: Tsic404 <liuheng@deepin.org>
-Build-Depends: debhelper (>= 11)
-Standards-Version: 4.1.3
-Homepage: https://github.com/deepin-community/template-repository
-#Vcs-Browser: https://salsa.debian.org/debian/deepin-community-template-repository
-#Vcs-Git: https://salsa.debian.org/debian/deepin-community-template-repository.git
+Maintainer: Debian Python Team <team+python@tracker.debian.org>
+Uploaders:
+ Carsten Schoenert <c.schoenert@t-online.de>
+Build-Depends:
+ debhelper-compat (= 13),
+ dh-sequence-python3,
+ mkdocs <!nocheck>,
+ mkdocs-material <!nocheck>,
+ pybuild-plugin-pyproject,
+ python3-all,
+ python3-markdown <!nocheck>,
+ python3-markdown-callouts <!nodoc>,
+ python3-hatchling,
+ python3-pymdownx,
+ python3-pytest <!nocheck>,
+ python3-pytest-golden <!nocheck>,
+Rules-Requires-Root: no
+Standards-Version: 4.6.2
+Homepage: https://github.com/oprypin/mkdocs-literate-nav
+Vcs-Git: https://salsa.debian.org/python-team/packages/mkdocs-literate-nav.git
+Vcs-Browser: https://salsa.debian.org/python-team/packages/mkdocs-literate-nav
 
-Package: template-repository
-Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Package: mkdocs-literate-nav
+Architecture: all
+Depends:
+ ${misc:Depends},
+ ${python3:Depends},
+Recommends:
+ ${python3:Recommends},
+Suggests:
+ mkdocs-literate-nav-doc,
+ ${python3:Suggests},
+Description: MkDocs extension to specify the navigation in Markdown (Python3)
+ MkDocs is a fast, simple and downright gorgeous static site generator
+ that's geared towards building project documentation. Documentation
+ source files are written in Markdown, and configured with a single YAML
+ configuration file.
+ .
+ This package contains the mkdocs-literate-nav extension, which allows one
+ to use Markdown instead of YAML to define a navigation structure within
+ your MkDocs based documentation files.
+
+Package: mkdocs-literate-nav-doc
+Section: doc
+Architecture: all
+Multi-Arch: foreign
+Depends:
+ ${misc:Depends},
+ ${mkdocs:Depends}
+Description: MkDocs extension to specify the navigation in Markdown (Documentation)
+ MkDocs is a fast, simple and downright gorgeous static site generator
+ that's geared towards building project documentation. Documentation
+ source files are written in Markdown, and configured with a single YAML
+ configuration file.
+ .
+ This core binary package contains the mkdocs-literate-nav extension, which
+ allows one to use Markdown instead of YAML to define a navigation structure
+ within your MkDocs based documentation files.
+ .
+ This package contains the HTML documentation.

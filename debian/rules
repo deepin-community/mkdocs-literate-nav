@@ -1,4 +1,36 @@
 #!/usr/bin/make -f
+# -*- makefile -*-
+
+#export DH_VERBOSE = 1
+
+export PYBUILD_NAME=mkdocs_literate_nav
+export PYBUILD_DESTDIR=debian/mkdocs-literate-nav
 
 %:
-	dh $@
+	dh $@ --with mkdocs --buildsystem=pybuild
+
+override_dh_clean:
+	rm -rf html .pytest_cache
+	dh_clean
+
+override_dh_auto_build:
+	dh_auto_build
+ifeq (,$(findstring nodoc, $(DEB_BUILD_OPTIONS)))
+	PYTHONPATH=. python3 -m mkdocs build -v --site-dir=html
+	rm -f html/requirements.* html/sitemap.xml.gz
+endif
+
+override_dh_mkdocs:
+ifeq (,$(findstring nodoc, $(DEB_BUILD_OPTIONS)))
+	dh_mkdocs
+endif
+
+override_dh_installdocs:
+	dh_installdocs
+ifeq (,$(findstring nodoc, $(DEB_BUILD_OPTIONS)))
+	# Workaround to move content of mkdocs-literate-nav-doc into the right
+	# place.
+	mv $(CURDIR)/debian/mkdocs-literate-nav-doc/usr/share/doc/mkdocs-literate-nav/* \
+	   $(CURDIR)/debian/mkdocs-literate-nav-doc/usr/share/doc/mkdocs-literate-nav-doc && \
+	rm -rf $(CURDIR)/debian/mkdocs-literate-nav-doc/usr/share/doc/mkdocs-literate-nav
+endif

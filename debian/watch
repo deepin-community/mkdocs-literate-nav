@@ -1,0 +1,10 @@
+# watch file for mkdoc-literate-nav
+
+version=4
+
+opts="mode=git, \
+      compression=gz, \
+      uversionmangle=s/(\d)[_\.\-\+]?((alpha|beta|RC|rc|pre|dev)\.?\d*)$/$1~$2/, \
+      dversionmangle=s/\+ds(\.?\d+)?$//" \
+https://github.com/oprypin/mkdocs-literate-nav.git \
+      refs/tags/v@ANY_VERSION@

@@ -1,0 +1,27 @@
+From: Carsten Schoenert <c.schoenert@t-online.de>
+Date: Thu, 10 Nov 2022 07:22:47 +0100
+Subject: Privacy: Remove linking to unneeded graphics
+
+We don't need to include the linking to the external build status, PyPi
+and the GitHub workflow website.
+
+Forwarded: Not-Needed
+---
+ README.md | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/README.md b/README.md
+index 788ebc4..1724a85 100644
+--- a/README.md
++++ b/README.md
+@@ -2,10 +2,6 @@
+ 
+ **[Plugin][] for [MkDocs][] to specify the navigation in Markdown instead of YAML**
+ 
+-[![PyPI](https://img.shields.io/pypi/v/mkdocs-literate-nav)](https://pypi.org/project/mkdocs-literate-nav/)
+-[![GitHub](https://img.shields.io/github/license/oprypin/mkdocs-literate-nav)](https://github.com/oprypin/mkdocs-literate-nav/blob/master/LICENSE.md)
+-[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/oprypin/mkdocs-literate-nav/ci.yml.svg)](https://github.com/oprypin/mkdocs-literate-nav/actions?query=event%3Apush+branch%3Amaster)
+-
+ ```shell
+ pip install mkdocs-literate-nav
+ ```

@@ -1,0 +1,45 @@
+This package is maintained with git-buildpackage(1). It follows DEP-14 for
+branch naming (e.g. using debian/master for the current version in Debian
+unstable due Debian Python team policy).
+
+It uses pristine-tar(1) to store enough information in git to generate bit
+identical tarballs when building the package without having downloaded an
+upstream tarball first.
+
+When working with patches it is recommended to use "gbp pq import" to import
+the patches, modify the source and then use "gbp pq export --commit" to commit
+the modifications.
+
+The changelog is generated using "gbp dch" so if you submit any changes don't
+bother to add changelog entries but rather provide a nice git commit message
+that can then end up in the changelog.
+
+It is recommended to build the package with pbuilder using:
+
+    gbp buildpackage --git-pbuilder
+
+For information on how to set up a pbuilder environment see the git-pbuilder(1)
+manpage. In short:
+
+    DIST=sid git-pbuilder create
+    gbp clone https://salsa.debian.org/python-team/packages/mkdocs-literate-nav.git
+    cd mkdocs-literate-nav
+    gbp buildpackage --git-pbuilder
+
+About Lintian warnings
+
+Lintian is (while writing) complaining about some potential privacy issues.
+
+$ lintian -IE --tag-display-limit 0
+W: mkdocs-literate-nav-doc: privacy-breach-generic [<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>] (https://fonts.gstatic.com) [usr/share/doc/mkdocs-literate-nav-doc/html/404.html]
+W: mkdocs-literate-nav-doc: privacy-breach-generic [<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>] (https://fonts.gstatic.com) [usr/share/doc/mkdocs-literate-nav-doc/html/index.html]
+W: mkdocs-literate-nav-doc: privacy-breach-generic [<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>] (https://fonts.gstatic.com) [usr/share/doc/mkdocs-literate-nav-doc/html/reference.html]
+W: mkdocs-literate-nav-doc: privacy-breach-generic [<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=roboto:300,300i,400,400i,700,700i%7croboto+mono:400,400i,700,700i&display=fallback">] (https://fonts.googleapis.com/css?family=roboto:300,300i,400,400i,700,700i%7croboto+mono:400,400i,700,700i&display=fallback) [usr/share/doc/mkdocs-literate-nav-doc/html/404.html]
+W: mkdocs-literate-nav-doc: privacy-breach-generic [<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=roboto:300,300i,400,400i,700,700i%7croboto+mono:400,400i,700,700i&display=fallback">] (https://fonts.googleapis.com/css?family=roboto:300,300i,400,400i,700,700i%7croboto+mono:400,400i,700,700i&display=fallback) [usr/share/doc/mkdocs-literate-nav-doc/html/index.html]
+W: mkdocs-literate-nav-doc: privacy-breach-generic [<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=roboto:300,300i,400,400i,700,700i%7croboto+mono:400,400i,700,700i&display=fallback">] (https://fonts.googleapis.com/css?family=roboto:300,300i,400,400i,700,700i%7croboto+mono:400,400i,700,700i&display=fallback) [usr/share/doc/mkdocs-literate-nav-doc/html/reference.html]
+
+Obviously Lintian is right, but the content mentioned here is created by
+mkdocs. To solve this warning mkdocs needs to get reworked so Debian would
+use prepackaged stuff and mkdocs is using local resources.
+
+ -- Carsten Schoenert <c.schoenert@t-online.de>  Wed, 06 Nov 2022 23:25:00 +0100
