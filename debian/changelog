@@ -1,5 +1,35 @@
-template-repository (1.0-1) unstable; urgency=medium
+mkdocs-literate-nav (0.6.1-1) unstable; urgency=medium
 
-  * Initial release
+  * [6722184] d/*.doc-base: Fixup small typos
+  * [74e8d80] d/watch: Set compression typ to gz
+  * [59a1fc7] New upstream version 0.6.1
+  * [01d668a] Rebuild patch queue from patch-queue branch
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+ -- Carsten Schoenert <c.schoenert@t-online.de>  Thu, 14 Sep 2023 15:32:54 +0530
+
+mkdocs-literate-nav (0.6.0-1) unstable; urgency=medium
+
+  * [f3fe5df] New upstream version 0.6.0
+  * [233ebdb] d/control: Bump Standards-Version to 4.6.2
+    No further changes needed.
+  * [5f921c6] d/control: Drop python3-poetry, add python3-hatchling
+  * [f5174af] d/rules: Ensure nodoc build profile can succeed
+  * [95aaee2] d/copyright: Update year data
+
+ -- Carsten Schoenert <c.schoenert@t-online.de>  Sun, 08 Jan 2023 08:54:55 +0100
+
+mkdocs-literate-nav (0.5.0-2) unstable; urgency=medium
+
+  * Source only upload
+  * [67c3973] d/control: Correct Vcs-Browser URL
+  * [8d02721] d/control: Mark the -doc package as Multi-Arch foreign
+
+ -- Carsten Schoenert <c.schoenert@t-online.de>  Wed, 16 Nov 2022 23:06:38 +0100
+
+mkdocs-literate-nav (0.5.0-1) unstable; urgency=medium
+
+  * [0f5e116] New upstream version 0.5.0
+  * [7000266] First and basic Debianization
+    (Closes: #1023891)
+
+ -- Carsten Schoenert <c.schoenert@t-online.de>  Sat, 12 Nov 2022 10:20:34 +0100

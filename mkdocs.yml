@@ -1,0 +1,37 @@
+site_name: "mkdocs-literate-nav"
+site_url: "https://oprypin.github.io/mkdocs-literate-nav"
+repo_url: "https://github.com/oprypin/mkdocs-literate-nav"
+edit_uri: blob/master/docs/
+use_directory_urls: false
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - toc.integrate
+  icon:
+    repo: fontawesome/brands/github
+  palette:
+    primary: teal
+    accent: purple
+
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.magiclink
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.snippets:
+      check_paths: true
+  - callouts
+  - admonition
+  - md_in_html
+  - toc:
+      permalink: "#"
+
+nav:
+  - section-index: /mkdocs-section-index/
+  - literate-nav:
+    - Overview: README.md
+    - Reference: reference.md
+  - gen-files: /mkdocs-gen-files/
+  - same-dir: /mkdocs-same-dir/
